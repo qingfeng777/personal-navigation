@@ -1,10 +1,22 @@
 package com.ming.personal.moudle.entity;
 
+import org.bson.types.ObjectId;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Category {
-    private String name;
+    private String name, page;
     private List<Node> node;
+    private ObjectId _id;
+
+    public ObjectId get_id() {
+        return _id;
+    }
+
+    public void set_id(ObjectId _id) {
+        this._id = _id;
+    }
 
     public String getName() {
         return name;
@@ -15,6 +27,9 @@ public class Category {
     }
 
     public List<Node> getNode() {
+        if (this.node == null){
+            this.node = new ArrayList<>();
+        }
         return node;
     }
 
@@ -22,8 +37,17 @@ public class Category {
         this.node = node;
     }
 
-    public Category(String name, List<Node> node) {
+    public String getPage() {
+        return page;
+    }
+
+    public void setPage(String page) {
+        this.page = page;
+    }
+
+    public Category(String name, String page, List<Node> node) {
         this.name = name;
+        this.page = page;
         this.node = node;
     }
 }

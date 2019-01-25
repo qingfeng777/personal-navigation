@@ -1,16 +1,19 @@
 package com.ming.personal.moudle.entity;
 
+import org.bson.types.ObjectId;
+
 import java.util.List;
+import java.io.Serializable;
 
-public class Page {
+public class Page implements Serializable{
     private String Name;
-    private List<Category> categorie;
-    private long id;
+    // category name
+    private List<String> category;
+    private ObjectId _id;
 
-    public Page(String name, List<Category> categorie, long id) {
+    public Page(String name, List<String> category) {
         Name = name;
-        this.categorie = categorie;
-        this.id = id;
+        this.category = category;
     }
 
     public String getName() {
@@ -21,28 +24,36 @@ public class Page {
         Name = name;
     }
 
-    public List<Category> getCategorie() {
-        return categorie;
+    public List<String> getCategorie() {
+        return category;
     }
 
-    public void setCategorie(List<Category> categorie) {
-        this.categorie = categorie;
+    public void setCategorie(List<String> category) {
+        this.category = category;
     }
 
-    public long getId() {
-        return id;
+    public List<String> getCategory() {
+        return category;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setCategory(List<String> category) {
+        this.category = category;
+    }
+
+    public ObjectId get_id() {
+        return _id;
+    }
+
+    public void set_id(ObjectId _id) {
+        this._id = _id;
     }
 
     @Override
     public String toString() {
         return "Page{" +
                 "Name='" + Name + '\'' +
-                ", categorie=" + categorie +
-                ", id=" + id +
+                ", categorie=" + category +
+                ", id=" + _id +
                 '}';
     }
 }

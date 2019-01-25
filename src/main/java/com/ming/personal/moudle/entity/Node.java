@@ -1,7 +1,7 @@
 package com.ming.personal.moudle.entity;
 
 public class Node {
-    private String name, string;
+    private String name, URL;
 
     public String getName() {
         return name;
@@ -11,16 +11,23 @@ public class Node {
         this.name = name;
     }
 
-    public String getString() {
-        return string;
+    public String getURL() {
+        return URL;
     }
 
-    public void setString(String string) {
-        this.string = string;
+    public void setURL(String URL) {
+        this.URL = URL;
     }
 
-    public Node(String name, String string) {
+    public Node(String name) {
         this.name = name;
-        this.string = string;
+    }
+
+    public Node() {
+    }
+
+    public Node(String name, String URL) {
+        this.name = name;
+        this.URL = URL;
     }
 }
