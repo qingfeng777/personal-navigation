@@ -25,8 +25,8 @@ public class CategoryDaoImpl implements CategoryDao {
     }
 
     @Override
-    public void delCategory(String name) {
-        Query query =  new Query(Criteria.where("name").is(name));
+    public void delCategory(String name, String page) {
+        Query query =  new Query(Criteria.where("name").is(name).and("page").is(page));
         mongoTemplate.remove(query, Category.class);
     }
 

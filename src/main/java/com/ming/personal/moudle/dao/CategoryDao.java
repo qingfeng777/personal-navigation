@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CategoryDao {
     public void addCategory(Category category);
-    public void delCategory(String name);
+    public void delCategory(String name, String page);
     public void updateCategory(Category category);
     public List<Category> listCategory(String page);
     public Category getCategoryByName(String name, String page);
