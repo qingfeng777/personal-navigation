@@ -9,8 +9,6 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -61,6 +59,12 @@ public class CategoryDaoImpl implements CategoryDao {
     @Override
     public void delNode(String name, String cateName, String page) {
         Category cate = this.getCategoryByName(cateName, page);
-        cate.getNode().remove(new Node(name));
+        for (Node node : cate.getNode()){
+            if (name.equals(node.getName())){
+                cate.getNode().remove(node);
+                break;
+            }
+        }
+        this.updateCategory(cate);
     }
 }

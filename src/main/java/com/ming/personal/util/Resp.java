@@ -4,44 +4,42 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 public class Resp {
-    private HttpStatus status;
+    private int status;
     private String message;
     private Object data;
 
-
     public static ResponseEntity Resp(HttpStatus status, String message, Object data){
-        return new ResponseEntity(new Resp(status, message, data), status);
+        return new ResponseEntity(new Resp(status.value(), message, data), status);
     }
 
     public static ResponseEntity Resp(HttpStatus status, Object data){
-        return new ResponseEntity(new Resp(status, data), status);
+        return new ResponseEntity(new Resp(status.value(), data), status);
     }
-
 
     public static ResponseEntity Resp(HttpStatus status, String message){
-        return new ResponseEntity(new Resp(status, message), status);
+        return new ResponseEntity(new Resp(status.value(), message), status);
     }
 
-    public Resp(HttpStatus status, Object data) {
+    public Resp(int status, Object data) {
         this.status = status;
         this.data = data;
     }
-    public Resp(HttpStatus status, String message) {
+    public Resp(int status, String message) {
         this.status = status;
         this.message = message;
     }
 
-    public Resp(HttpStatus status, String message, Object data) {
+    public Resp(int status, String message, Object data) {
         this.status = status;
         this.message = message;
         this.data = data;
     }
 
-    public HttpStatus getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(HttpStatus status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

@@ -1,6 +1,7 @@
 package com.ming.personal.controller;
 
 import com.ming.personal.moudle.dao.impl.CategoryDaoImpl;
+import com.ming.personal.util.Resp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,13 +18,13 @@ public class NodeController {
     @RequestMapping(value = "/node", method = RequestMethod.POST)
     public ResponseEntity addNode(String name, String URL, String cateName, String page){
         categoryDao.addNode(name, URL, cateName, page);
-        return new ResponseEntity(HttpStatus.OK);
+        return Resp.Resp(HttpStatus.OK, "success");
     }
 
     @RequestMapping(value = "/node", method = RequestMethod.DELETE)
     public ResponseEntity delNode(String name, String cateName, String page){
         categoryDao.delNode(name, cateName, page);
-        return new ResponseEntity(HttpStatus.OK);
+        return Resp.Resp(HttpStatus.OK, "success");
     }
 
 }
