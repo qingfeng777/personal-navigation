@@ -15,36 +15,36 @@ import java.util.List;
 public class CategoryDaoImpl implements CategoryDao {
 
     @Autowired
-    private MongoTemplate mongoTemplate;
+    private MongoTemplate db;
 
     @Override
     public void addCategory(Category category) {
-        mongoTemplate.save(category);
+        db.save(category);
     }
 
     @Override
     public void delCategory(String name, String page) {
         Query query =  new Query(Criteria.where("name").is(name).and("page").is(page));
-        mongoTemplate.remove(query, Category.class);
+        db.remove(query, Category.class);
     }
 
     @Override
     public void updateCategory(Category category) {
         Query query=new Query(Criteria.where("_id").is(category.get_id())); //  数组 只能一个一个加?
         Update update= new Update().set("name", category.getName()).set("node", category.getNode()); // .push("node", category.getNode());
-        mongoTemplate.updateFirst(query, update, Category.class);
+        db.updateFirst(query, update, Category.class);
     }
 
     @Override
     public List<Category> listCategory(String page) {
         Query query = new Query(Criteria.where("page").is(page));
-        return mongoTemplate.find(query, Category.class);
+        return db.find(query, Category.class);
     }
 
     @Override
     public Category getCategoryByName(String name, String page) {
         Query query =  new Query(Criteria.where("name").is(name).and("page").is(page));
-        return mongoTemplate.findOne(query, Category.class);
+        return db.findOne(query, Category.class);
     }
 
     // blow is node func .

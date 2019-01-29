@@ -3,9 +3,12 @@ package com.ming.personal.moudle.entity;
 import java.util.ArrayList;
 
 public class Site {
-    private ArrayList search, sub;
+    private ArrayList search, subSite;
 
     public ArrayList getSearch() {
+        if (this.search == null){
+            this.search = new ArrayList();
+        }
         return search;
     }
 
@@ -13,16 +16,22 @@ public class Site {
         this.search = search;
     }
 
-    public ArrayList getSub() {
-        return sub;
+    public ArrayList getSubSite() {
+        if (this.subSite == null){
+            this.subSite = new ArrayList();
+        }
+        return subSite;
     }
 
-    public void setSub(ArrayList sub) {
-        this.sub = sub;
+    public void setSubSite(ArrayList subSite) {
+        this.subSite = subSite;
     }
 
-    public Site(ArrayList search, ArrayList sub) {
+    public Site(ArrayList search, ArrayList subSite) {
         this.search = search;
-        this.sub = sub;
+        this.subSite = subSite;
+    }
+
+    public Site() {
     }
 }

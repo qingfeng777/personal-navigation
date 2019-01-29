@@ -12,18 +12,18 @@ import org.springframework.stereotype.Component;
 public class PageDaoImpl implements PageDao {
 
     @Autowired
-    private MongoTemplate mongoTemplate;
+    private MongoTemplate db;
 
     @Override
     public Page getPageByName(String name) {
         Query query =  new Query(Criteria.where("name").is(name));
-        Page page = mongoTemplate.findOne(query, Page.class);
+        Page page = db.findOne(query, Page.class);
         return page;
     }
 
     @Override
     public void addPage(String name) {
         Page page = new Page(name,null);
-        mongoTemplate.save(page);
+        db.save(page);
     }
 }

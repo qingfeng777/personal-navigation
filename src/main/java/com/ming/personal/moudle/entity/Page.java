@@ -2,6 +2,7 @@ package com.ming.personal.moudle.entity;
 
 import org.bson.types.ObjectId;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
 
@@ -33,6 +34,9 @@ public class Page implements Serializable{
     }
 
     public List<String> getCategory() {
+        if (this.category == null){
+            this.category = new ArrayList<>();
+        }
         return category;
     }
 
