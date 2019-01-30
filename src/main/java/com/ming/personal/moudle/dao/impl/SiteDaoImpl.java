@@ -49,9 +49,11 @@ public class SiteDaoImpl implements SiteDao {
     @Override
     public void delSearch(String name) {
         Site site = this.getSite();
-        for (Object search : site.getSearch()) {
-            if (name.equals(((Node) search).getName())) {
-                site.getSearch().remove(search);
+        for (int i = 0; i < site.getSearch().size(); i++) {
+            Node node = (Node) site.getSearch().get(i);
+            if (name.equals(node.getName())) {
+                site.getSearch().remove(i);
+                break;
             }
         }
         this.updateSite(site);
@@ -60,9 +62,11 @@ public class SiteDaoImpl implements SiteDao {
     @Override
     public void delSubSite(String name) {
         Site site = this.getSite();
-        for (Object subSite : site.getSubSite()) {
-            if (name.equals(((Node) subSite).getName())) {
-                site.getSearch().remove(subSite);
+        for (int i = 0; i < site.getSubSite().size(); i++) {
+            Node node = (Node) site.getSubSite().get(i);
+            if (name.equals(node.getName())) {
+                site.getSubSite().remove(i);
+                break;
             }
         }
         this.updateSite(site);

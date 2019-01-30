@@ -36,7 +36,7 @@ public class CategoryController {
         return Resp.Resp(HttpStatus.OK, "success");
     }
 
-    // 同 page ,同名check
+    // 同 page ,同name check
     @RequestMapping(value = "/category", method = RequestMethod.POST)
     public ResponseEntity addCategory(@RequestBody Category category){
         Category oldCate = categoryDao.getCategoryByName(category.getName(), category.getPage());

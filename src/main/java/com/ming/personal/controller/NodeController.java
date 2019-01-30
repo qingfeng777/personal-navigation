@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class NodeController {
 
     @Autowired
-    private CategoryDaoImpl categoryDao;
+    private CategoryDaoImpl category;
 
     @RequestMapping(value = "/node", method = RequestMethod.POST)
     public ResponseEntity addNode(String name, String URL, String cateName, String page){
-        categoryDao.addNode(name, URL, cateName, page);
+        category.addNode(name, URL, cateName, page);
         return Resp.Resp(HttpStatus.OK, "success");
     }
 
     @RequestMapping(value = "/node", method = RequestMethod.DELETE)
     public ResponseEntity delNode(String name, String cateName, String page){
-        categoryDao.delNode(name, cateName, page);
+        category.delNode(name, cateName, page);
         return Resp.Resp(HttpStatus.OK, "success");
     }
 
